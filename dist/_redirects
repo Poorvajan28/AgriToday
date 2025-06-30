@@ -1,0 +1,5 @@
+# API requests to backend on Railway
+/api/*  https://your-backend-url.railway.app/api/:splat  200
+
+# SPA routing - redirect all other requests to index.html
+/*    /index.html   200

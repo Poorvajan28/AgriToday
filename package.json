@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "build": "echo 'Build step completed - static files ready' && ls -la dist/",
+    "build": "echo Build step completed - static files ready && dir dist",
     "create-admin": "node scripts/createAdmin.js",
     "setup": "npm install && npm run create-admin"
   },

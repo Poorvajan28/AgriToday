@@ -13,8 +13,26 @@ const razorpay = new Razorpay({
 // @access  Private
 const createSubscriptionOrder = async (req, res) => {
   try {
-    const user = await User.findById(req.user.id);
+    const { amount } = req.body;
+    
+    // Check if Razorpay credentials are available
+    if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET || 
+        process.env.RAZORPAY_KEY_ID === 'your_razorpay_key_id') {
+      return res.status(200).json({
+        success: true,
+        message: 'Payment system is in demo mode',
+        demo: true,
+        order: {
+          id: 'demo_order_' + Date.now(),
+          amount: amount || 4900,
+          currency: 'INR',
+          status: 'created'
+        }
+      });
+    }
 
+    const user = await User.findById(req.user.id);
+    
     if (!user) {
       return res.status(404).json({
         success: false,
@@ -34,7 +52,7 @@ const createSubscriptionOrder = async (req, res) => {
       });
     }
 
-    const amount = parseInt(process.env.SUBSCRIPTION_AMOUNT); // ₹49 in paise
+    const subscriptionAmount = parseInt(amount || process.env.SUBSCRIPTION_AMOUNT || 4900); // ₹49 in paise
     const currency = process.env.SUBSCRIPTION_CURRENCY || 'INR';
 
     // Create order with Razorpay

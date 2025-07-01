@@ -14,6 +14,7 @@ const router = express.Router();
 
 // Protected routes (require authentication)
 router.post('/create-subscription-order', protect, createSubscriptionOrder);
+router.post('/create-order', protect, createSubscriptionOrder); // Alias for backwards compatibility
 router.post('/verify-subscription', protect, verifySubscriptionPayment);
 router.get('/subscription-status', protect, getSubscriptionStatus);
 router.post('/cancel-subscription', protect, cancelSubscription);

@@ -1,7 +1,14 @@
 // API functions for AgroCulture
 
-// Base API URL - connected to your deployed Railway backend
-const API_BASE_URL = 'https://incredible-beauty-production-f2fe.up.railway.app/api';
+// Base API URL - works for both local and production
+const API_BASE_URL = (() => {
+    // If running locally, use local server
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        return 'http://localhost:5000/api';
+    }
+    // If deployed on Netlify, use the /api path (handled by redirects)
+    return '/api';
+})();
 
 // Get auth token from localStorage
 function getAuthToken() {

@@ -1,5 +1,5 @@
-# API requests to backend on Railway
-/api/*  https://your-backend-url.railway.app/api/:splat  200
+# API redirects to backend
+/api/*  https://incredible-beauty-production-f2fe.up.railway.app/api/:splat  200
 
-# SPA routing - redirect all other requests to index.html
+# SPA fallback - serve index.html for all routes
 /*    /index.html   200

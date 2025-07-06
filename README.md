@@ -332,8 +332,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Support
 
 For support and questions:
-- Email: info@agroculture.com
-- Phone: +91 98765 43210
+- Email: poorvajan28@gmail.com
+- Phone: +91 6381672467
 
 ## Roadmap
 
